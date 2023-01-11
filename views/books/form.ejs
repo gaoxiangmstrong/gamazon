@@ -1,0 +1,101 @@
+<% layout("layouts/boilerplate") %>
+<h1>Please register before proceeding</h1>
+<div>
+  <form
+    action="/books/cart/all/checkout/client"
+    method="POST"
+    onsubmit="return validateForm()"
+    id="registerForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter your name"
+          name="name"
+          required />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phoneNumber">Phone number:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phoneNumber"
+          placeholder="Enter your phone number"
+          name="phoneNumber"
+          required />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Address:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          id="inputAddress"
+          placeholder="Enter your address"
+          required />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="deliverDate">Delivering date:</label>
+        <select
+          id="deliverDate"
+          class="form-control"
+          name="deliverDate"
+          required>
+          <option value="" selected>Choose a date</option>
+          <option value="tomorrow"><%= tomorrow%></option>
+          <option value="secondDay"><%= secondDay %></option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="payment">Payment method:</label>
+        <select id="payment" class="form-control" name="payment" required>
+          <option value="" selected>Choose a method</option>
+          <option value="credit card">Pay by credit card</option>
+          <option value="convenient store">Pay at a convenient store</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputZip">Zip code:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputZip"
+          name="zipCode"
+          placeholder="Enter your zip code"
+          required />
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="gridCheck"
+          required />
+        <label class="form-check-label" for="gridCheck"
+          >I confirm that all the information is correct and complete</label
+        >
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </form>
+  <script>
+    function validateForm() {
+      // check that all form fields are filled
+      var form = document.getElementById("registerForm");
+      for (var i = 0; i < form.length; i++) {
+        if (form[i].type === "text" || form[i].type === "select-one") {
+          if (form[i].value === "") {
+            alert(
+              "All fields are required. Please fill out all the information before submitting."
+            );
+            return false;
+          }
+        }
+      }
+    }
+  </script>
+</div>

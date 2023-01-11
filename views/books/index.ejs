@@ -1,0 +1,25 @@
+<% layout("layouts/boilerplate") %>
+<!--render all books-->
+<h1>All books</h1>
+<div class="bigbox">
+  <% for (let book of books ) { %>
+  <div class="box">
+    <img src="<%= book.image %> " />
+    <div class="font-sizing" id="title">
+      title:<span class="title"><%= book.title %></span>
+    </div>
+    <div class="font-sizing">ISB_code<%= book.ISB_code %></div>
+    <div class="font-sizing">Price: <%= book.price %></div>
+    <div class="font-sizing">quantity: <%= book.quantity %></div>
+    <div class="font-sizing">
+      <a href="/books/<%= book.title %> ">detail of <%=book.title %></a>
+    </div>
+    <form action="books/cart/all" method="POST">
+      <input type="hidden" name="id" value="<%= book._id %>" />
+      <button class="btn btn-primary">add to the cart</button>
+    </form>
+  </div>
+  <%} %>
+</div>
+
+<!--end render all books-->

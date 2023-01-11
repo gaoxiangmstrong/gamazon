@@ -1,0 +1,40 @@
+<% layout("layouts/boilerplate") %>
+<table>
+  <thead>
+    <tr>
+      <th>img</th>
+      <th>title</th>
+      <th>ISB_code</th>
+      <th>quantity</th>
+      <th>price</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let item of all_item) {%>
+    <tr>
+      <td>
+        <img src="<%= item.image %>" alt="" style="width: 50%; height: 50%" />
+      </td>
+      <td><%= item.title %></td>
+      <td><%= item.ISB_code %></td>
+      <td class="quantity"><%= item.quantity %></td>
+      <td class="price"><%= item.price %></td>
+      <td>
+        <form action="/books/cart/<%= item._id%>?_method=DELETE" method="POST">
+          <button class="button-table btns">delete</button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+<hr />
+<div>
+  <div class="checkout">
+    <div class="total">total price:</div>
+    <a class="button btn btn-primary" href="/books/cart/all/checkout"
+      >Checkout</a
+    >
+  </div>
+</div>

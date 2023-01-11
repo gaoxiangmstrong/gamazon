@@ -1,0 +1,9 @@
+<% layout("layouts/boilerplate") %>
+
+<h2>Thak you for using our service: <%= customer.name %></h2>
+<ul class="list-group">
+  <h3>The rest are list of items you purchased</h3>
+  <% for(let item of items) { %>
+  <li class="list-group-item"><%= item.title %></li>
+  <% } %>
+</ul>
