@@ -43,7 +43,7 @@ app.get("/books", async (req, res) => {
     for (let i = 0; i < keywords.length; i++) {
       regexs.push(new RegExp(keywords[i], "i"));
     }
-    let books = await Book.find({ title: { $all: regexs } });
+    let books = await Book.find({ title: { $in: regexs } });
     res.render("books/index", { books });
   } else {
     let books = await Book.find({});
@@ -53,6 +53,7 @@ app.get("/books", async (req, res) => {
 
   // }
 });
+
 // page2 seperate page
 app.get("/page2", async (req, res) => {
   let books = await Book.find({});

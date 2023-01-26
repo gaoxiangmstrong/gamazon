@@ -24,6 +24,12 @@ let ClientSchema = new Schema({
       ref: "Cart_item",
     },
   ],
+  purchasedItems: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Cart_item",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Client", ClientSchema);
